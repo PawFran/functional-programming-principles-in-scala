@@ -1,0 +1,31 @@
+class Rational(x: Int, y: Int) {
+  def numer = x
+  def denom = y
+
+  def add(that: Rational): Rational = {
+    new Rational(
+      numer * that.denom + that.numer * denom,
+      denom * that.denom
+    )
+  }
+
+  def sub(that: Rational): Rational = {
+    this.add(that.neg)
+  }
+
+  def mul(that: Rational): Rational = {
+    new Rational(this.numer * that.numer, this.denom * that.denom)
+  }
+
+  def neg: Rational = {
+    new Rational(-numer, denom)
+  }
+
+  override def toString: String = {
+    this.numer + "/" + this.denom
+  }
+}
+
+val x = new Rational(1, 2)
+val y = new Rational(3, 4)
+x.add(y)
