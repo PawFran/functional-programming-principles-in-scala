@@ -158,7 +158,7 @@ class FunSetSuite extends FunSuite {
     }
   }
 
-  test("map applies a transformation to each element of a set") {
+  ignore("map applies a transformation to each element of a set") {
     new TestSets {
       val s = union(union(s1, s2), s3)
       val res = map(s, (x: Int) => x + 1)
