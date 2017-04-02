@@ -142,5 +142,32 @@ class FunSetSuite extends FunSuite {
     }
   }
 
+  test("forall checks whether all elements satisfy predicate") {
+    new TestSets {
+      val s = union(union(s1, s2), s3)
+      assert(forall(s, (x: Int) => x < 4))
+      assert(! forall(s, (x: Int) => x < 3))
+    }
+  }
+
+  test("exists checks whether any element satisfies given predicate") {
+    new TestSets {
+      val s = union(union(s1, s2), s3)
+      assert(exists(s, (x: Int) => x % 2 == 0))
+      assert(exists(s, (x: Int) => x > 3))
+    }
+  }
+
+  test("map applies a transformation to each element of a set") {
+    new TestSets {
+      val s = union(union(s1, s2), s3)
+      val res = map(s, (x: Int) => x + 1)
+      printSet(res)
+      assert(!contains(res, 1))
+//      assert(contains(res, 2))
+//      assert(contains(res, 3))
+//      assert(contains(res, 4))
+    }
+  }
 
 }
